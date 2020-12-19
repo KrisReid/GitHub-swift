@@ -15,16 +15,18 @@ struct ContentView: View {
         
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)), Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))]), startPoint: .top, endPoint: .bottom)
+                
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color(#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
                 
                 ScrollView {
+                    
                     SearchView()
                     
                     VStack {
                         MyRepositoriesView(vm: MyRepositoriesViewModel())
+                        
                     }
-                    .background(Color.background)
                     .cornerRadius(16)
                     .padding(.top, 32)
                 }

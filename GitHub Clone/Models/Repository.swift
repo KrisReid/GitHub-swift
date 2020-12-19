@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Repository: Decodable, Hashable {
+struct Repository: Codable, Hashable {
     let id: Int
     let node_id : String
     let name : String
@@ -22,4 +22,10 @@ struct Repository: Decodable, Hashable {
     let open_issues : Int
     let watchers : Int
     let default_branch : String
+    var owner : Owner
+}
+
+struct Owner: Codable, Hashable {
+    let login : String
+    let avatar_url : String
 }
