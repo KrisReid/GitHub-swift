@@ -21,7 +21,12 @@ struct ContentView: View {
                 ScrollView {
                     SearchView()
                     
-                    MyRepositoriesView(vm: MyRepositoriesViewModelMore()) 
+                    VStack {
+                        MyRepositoriesView(vm: MyRepositoriesViewModel())
+                    }
+                    .background(Color.background)
+                    .cornerRadius(16)
+                    .padding(.top, 32)
                 }
             }
             .navigationTitle("Home")
@@ -40,6 +45,10 @@ struct ContentView: View {
     private func showChooseRepoView() {
         self.showModal = true
     }
+}
+
+extension Color {
+    static let background = Color(.init(white: 0.95, alpha: 1))
 }
 
 struct SearchView: View {

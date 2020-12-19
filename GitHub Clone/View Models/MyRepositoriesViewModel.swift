@@ -9,19 +9,34 @@ import Foundation
 
 class MyRepositoriesViewModel: ObservableObject {
     
-//    @Published var orders = [OrderViewModel]()
+    @Published var isLoading = true
+    @Published var repo = [Repository]()
+    @Published var errorMessage = ""
     
     init() {
-        fetchRepositories()
-    }
-    
-    func fetchRepositories() {
-        Service.getAllRepositories()
-//        Service().getAllRepositories() { orders in
-//            if let orders = orders {
-//                self.orders = orders.map(OrderViewModel.init)
-//            }
-//        }
+        
+        let urlString = "https://api.github.com/users/KrisReid/repos"
+        
+        guard let url = URL(string: urlString) else {
+            self.isLoading = false
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+            guard let data = data else { return }
+            print(data)
+            
+            DispatchQueue.main.async {
+                do {
+                    print(data)
+                    self.repo = try JSONDecoder().decode([Repository].self, from: data)
+                } catch {
+                    print("Failed to decode JSON:", error)
+                    self.errorMessage = error.localizedDescription
+                }
+                self.isLoading = false
+            }
+        }.resume()
     }
     
 }
