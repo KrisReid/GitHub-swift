@@ -51,7 +51,6 @@ struct ChooseRepoView: View {
                 .foregroundColor(.white)
             }
         }
-        
     }
 }
 

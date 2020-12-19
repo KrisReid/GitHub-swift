@@ -30,8 +30,8 @@ struct MyRepositoriesView: View {
             
             ScrollView (.horizontal) {
                 HStack (spacing: 10) {
-                    ForEach(vm.repo, id: \.self) {num in
-//                    ForEach(mockedRepos, id: \.self) {num in
+//                    ForEach(vm.repo, id: \.self) {num in
+                    ForEach(mockedRepos, id: \.self) {num in
                         VStack {
                             
                             WebImage(url: URL(string: num.owner.avatar_url))
@@ -70,7 +70,7 @@ struct RepoMetricsView: View {
         VStack (spacing: 2) {
             HStack {
                 Image(systemName: "ant.circle.fill")
-                    .foregroundColor(.red)
+                    .foregroundColor(Color(#colorLiteral(red: 0.6906132102, green: 0.6546949148, blue: 0.8075796962, alpha: 1)))
                 Text("\(repo.open_issues_count)")
                     .font(.system(size: 10))
                 Spacer()
@@ -78,7 +78,7 @@ struct RepoMetricsView: View {
             
             HStack {
                 Image(systemName: "binoculars.fill")
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(#colorLiteral(red: 0.6906132102, green: 0.6546949148, blue: 0.8075796962, alpha: 1)))
                 Text("\(repo.watchers)")
                     .font(.system(size: 10))
                 Spacer()
@@ -86,11 +86,19 @@ struct RepoMetricsView: View {
             
             HStack {
                 Image(systemName: "tuningfork")
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color(#colorLiteral(red: 0.6906132102, green: 0.6546949148, blue: 0.8075796962, alpha: 1)))
                 Text("\(repo.forks)")
                     .font(.system(size: 10))
                 Spacer()
             }
+            
+            Text(repo.private ? "Private" : "Public")
+                .font(.system(size: 10))
+                .padding(5)
+                .background(Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)))
+                .foregroundColor(.white)
+                .cornerRadius(5)
+            
         }.padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
     }
 }
