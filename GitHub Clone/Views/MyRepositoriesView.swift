@@ -30,8 +30,8 @@ struct MyRepositoriesView: View {
             
             ScrollView (.horizontal) {
                 HStack (spacing: 10) {
-//                    ForEach(vm.repo, id: \.self) {num in
-                    ForEach(mockedRepos, id: \.self) {num in
+                    ForEach(vm.repo, id: \.self) {num in
+//                    ForEach(mockedRepos, id: \.self) {num in
                         VStack {
                             
                             WebImage(url: URL(string: num.owner.avatar_url))
